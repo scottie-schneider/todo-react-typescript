@@ -13,7 +13,11 @@ const reducer = (state = initialState, action) => {
       ...state,
       todos: [
         ...state.todos,
-        { text: action.payload.name, complete: true, id: state.todos.length++ },
+        {
+          text: action.payload.name,
+          complete: false,
+          id: state.todos.length++,
+        },
       ],
     };
   }

@@ -12,8 +12,8 @@ const TodoList: React.FC<TodoListProps> = ({ todos, toggleTodo }) => {
     <ul>
       {todos.map((todo) => {
         return (
-          <Link to={`/${todo.id}`}>
-            <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} />
+          <Link key={todo.id} to={`/${todo.id}`}>
+            <TodoListItem todo={todo} toggleTodo={toggleTodo} />
           </Link>
         );
       })}

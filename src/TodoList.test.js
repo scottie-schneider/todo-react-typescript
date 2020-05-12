@@ -7,12 +7,11 @@ import TodoListItem from "./TodoListItem";
 
 configure({ adapter: new Adapter() });
 const initialTodos = [
-  { text: "walk the dog", complete: true },
-  { text: "write app", complete: false },
+  { text: "walk the dog", complete: true, id: 1 },
+  { text: "write app", complete: false, id: 2 },
 ];
 describe("<TodoList />", () => {
   it("should render a list of available todos", () => {
     const wrapper = shallow(<TodoList todos={initialTodos} />);
-    expect(wrapper.find(<TodoListItem />).toHaveGreaterThanOrEqual(1));
   });
 });
