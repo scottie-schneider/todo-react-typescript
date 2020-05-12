@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TodoList from "./TodoList";
+import IndividualTodo from "./IndividualTodo";
 import AddTodoForm from "./AddTodoForm";
 import { Todo, AddTodo, OnAddTodo } from "./types";
 import { connect } from "react-redux";
@@ -32,6 +33,7 @@ const App: React.FC<any> = ({ initialTodos, onAddTodo, toggleTodo }) => {
               </Fragment>
             )}
           />
+          <Route path="/:id" component={IndividualTodo} />
         </Switch>
       </Router>
     </Fragment>
