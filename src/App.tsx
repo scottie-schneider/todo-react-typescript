@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { Todo, AddTodo, OnAddTodo } from "./types";
@@ -14,13 +15,25 @@ const App: React.FC<any> = ({ initialTodos, onAddTodo, toggleTodo }) => {
   };
   return (
     <Fragment>
-      <TodoList todos={initialTodos} toggleTodo={toggleTodo} />
-      <AddTodoForm
-        addTodo={addTodo}
-        onAddTodo={onAddTodo}
-        newTodo={newTodo}
-        setNewTodo={setNewTodo}
-      />
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Fragment>
+                <TodoList todos={initialTodos} toggleTodo={toggleTodo} />
+                <AddTodoForm
+                  addTodo={addTodo}
+                  onAddTodo={onAddTodo}
+                  newTodo={newTodo}
+                  setNewTodo={setNewTodo}
+                />
+              </Fragment>
+            )}
+          />
+        </Switch>
+      </Router>
     </Fragment>
   );
 };

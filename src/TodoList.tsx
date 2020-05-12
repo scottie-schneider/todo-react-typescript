@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { TodoListItem } from "./TodoListItem";
 import { Todo, ToggleTodo } from "./types";
 interface TodoListProps {
@@ -11,7 +12,9 @@ const TodoList: React.FC<TodoListProps> = ({ todos, toggleTodo }) => {
     <ul>
       {todos.map((todo) => {
         return (
-          <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} />
+          <Link to={`/${todo.id}`}>
+            <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} />
+          </Link>
         );
       })}
     </ul>
