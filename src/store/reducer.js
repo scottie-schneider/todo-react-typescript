@@ -6,6 +6,12 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  if (action.type === "ADD TODO") {
+    return {
+      ...state,
+      todos: [...state.todos, { text: action.payload.name, complete: true }],
+    };
+  }
   return state;
 };
 
