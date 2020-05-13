@@ -1,5 +1,3 @@
-import { stat } from "fs";
-
 const initialState = {
   todos: [
     { text: "From redux 1", complete: true, id: 1 },
@@ -8,7 +6,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === "ADD TODO") {
+  if (action && action.type === "ADD TODO") {
     return {
       ...state,
       todos: [
@@ -16,12 +14,12 @@ const reducer = (state = initialState, action) => {
         {
           text: action.payload.name,
           complete: false,
-          id: state.todos.length++,
+          id: (state.todos.length += 1),
         },
       ],
     };
   }
-  if (action.type === "TOGGLE TODO") {
+  if (action && action.type === "TOGGLE TODO") {
     const newTodos = [...state.todos];
     const foundIndex = newTodos.findIndex((x) => x.id === action.payload.id);
     newTodos[foundIndex] = {
